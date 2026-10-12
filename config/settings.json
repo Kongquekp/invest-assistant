@@ -1,0 +1,24 @@
+{
+  "capital": 10000,
+  "max_drawdown_pct": 15,
+  "max_positions": 4,
+  "stop_loss_pct": 7,
+  "take_profit_pct": 12,
+  "trailing_drawdown_pct": 5,
+  "min_cash_pct": 20,
+  "max_single_pct": {"risk_on": 25, "neutral": 15, "risk_off": 5},
+  "reduce_threshold_pct": -10,
+  "halt_threshold_pct": -15,
+  "scan": {
+    "min_turnover_wan": 10000,
+    "lookback_days": 120,
+    "top_n": 8,
+    "max_per_theme": 2,
+    "exclude_keywords": ["债", "货币", "短融", "黄金", "白银", "豆粕", "能源化工", "原油"]
+  },
+  "fixed_symbols": [
+    {"code": "510300", "name": "沪深300ETF", "note": "市场基准"}
+  ],
+  "benchmark": {"code": "510300", "name": "沪深300ETF"},
+  "timezone": "Asia/Shanghai"
+}
