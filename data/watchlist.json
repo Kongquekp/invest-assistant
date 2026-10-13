@@ -1,103 +1,103 @@
 {
   "date": "2026-10-13",
   "regime": "risk_off",
-  "scanned": 213,
+  "scanned": 303,
   "benchmark": {
     "code": "510300",
     "name": "沪深300ETF",
-    "price": 4.335
+    "price": 4.345
   },
   "candidates": [
     {
       "code": "510300",
       "name": "沪深300ETF华泰柏瑞",
       "theme": "沪深300",
-      "price": 4.335,
-      "ret20_pct": -6.45,
+      "price": 4.345,
+      "ret20_pct": -6.24,
       "ma20": 4.513,
       "ma60": 4.635,
-      "vol20_pct": 12.1,
+      "vol20_pct": 12.0,
       "trend_ok": false,
-      "turnover_yi": 28.8,
-      "score": -0.0387
+      "turnover_yi": 46.79,
+      "score": -0.0374
     },
     {
       "code": "159509",
       "name": "纳指科技ETF景顺",
       "theme": "科技",
-      "price": 3.187,
-      "ret20_pct": 11.98,
+      "price": 3.178,
+      "ret20_pct": 11.67,
       "ma20": 3.006,
       "ma60": 2.819,
-      "vol20_pct": 28.5,
+      "vol20_pct": 28.6,
       "trend_ok": true,
-      "turnover_yi": 14.0,
-      "score": 0.4542
+      "turnover_yi": 30.72,
+      "score": 0.4519
+    },
+    {
+      "code": "159696",
+      "name": "纳指ETF易方达",
+      "theme": "其他",
+      "price": 2.19,
+      "ret20_pct": 6.93,
+      "ma20": 2.081,
+      "ma60": 2.031,
+      "vol20_pct": 15.7,
+      "trend_ok": true,
+      "turnover_yi": 1.21,
+      "score": 0.4416
     },
     {
       "code": "513100",
       "name": "纳指ETF国泰",
       "theme": "其他",
-      "price": 2.378,
-      "ret20_pct": 6.35,
+      "price": 2.375,
+      "ret20_pct": 6.22,
       "ma20": 2.288,
       "ma60": 2.219,
-      "vol20_pct": 13.8,
+      "vol20_pct": 14.0,
       "trend_ok": true,
-      "turnover_yi": 2.72,
-      "score": 0.4381
-    },
-    {
-      "code": "159660",
-      "name": "纳指ETF汇添富",
-      "theme": "其他",
-      "price": 2.532,
-      "ret20_pct": 6.16,
-      "ma20": 2.42,
-      "ma60": 2.36,
-      "vol20_pct": 16.9,
-      "trend_ok": true,
-      "turnover_yi": 1.39,
-      "score": 0.437
-    },
-    {
-      "code": "513300",
-      "name": "纳斯达克ETF华夏",
-      "theme": "纳斯达克",
-      "price": 2.864,
-      "ret20_pct": 5.76,
-      "ma20": 2.752,
-      "ma60": 2.688,
-      "vol20_pct": 16.0,
-      "trend_ok": true,
-      "turnover_yi": 2.74,
-      "score": 0.4346
+      "turnover_yi": 6.21,
+      "score": 0.4373
     },
     {
       "code": "159659",
       "name": "纳斯达克100ETF招商",
       "theme": "纳斯达克",
-      "price": 2.5,
-      "ret20_pct": 5.71,
+      "price": 2.506,
+      "ret20_pct": 5.96,
       "ma20": 2.402,
       "ma60": 2.34,
-      "vol20_pct": 14.9,
+      "vol20_pct": 14.6,
       "trend_ok": true,
-      "turnover_yi": 1.29,
-      "score": 0.4342
+      "turnover_yi": 2.48,
+      "score": 0.4358
     },
     {
-      "code": "512800",
-      "name": "银行ETF华宝",
-      "theme": "银行",
-      "price": 0.866,
-      "ret20_pct": 3.71,
-      "ma20": 0.846,
-      "ma60": 0.824,
-      "vol20_pct": 14.5,
+      "code": "513300",
+      "name": "纳斯达克ETF华夏",
+      "theme": "纳斯达克",
+      "price": 2.869,
+      "ret20_pct": 5.95,
+      "ma20": 2.752,
+      "ma60": 2.688,
+      "vol20_pct": 15.8,
       "trend_ok": true,
-      "turnover_yi": 6.04,
-      "score": 0.4223
+      "turnover_yi": 4.97,
+      "score": 0.4357
+    },
+    {
+      "code": "512700",
+      "name": "银行ETF南方",
+      "theme": "银行",
+      "price": 1.55,
+      "ret20_pct": 3.61,
+      "ma20": 1.515,
+      "ma60": 1.474,
+      "vol20_pct": 13.1,
+      "trend_ok": true,
+      "turnover_yi": 1.17,
+      "score": 0.4217
     },
     {
       "code": "515020",
@@ -109,21 +109,21 @@
       "ma60": 1.765,
       "vol20_pct": 13.5,
       "trend_ok": true,
-      "turnover_yi": 1.12,
+      "turnover_yi": 1.86,
       "score": 0.4211
     },
     {
-      "code": "515450",
-      "name": "红利低波50ETF南方",
+      "code": "561580",
+      "name": "央企红利ETF华泰柏瑞",
       "theme": "红利",
-      "price": 1.441,
-      "ret20_pct": 3.0,
-      "ma20": 1.405,
-      "ma60": 1.4,
-      "vol20_pct": 8.2,
+      "price": 1.294,
+      "ret20_pct": 3.19,
+      "ma20": 1.264,
+      "ma60": 1.235,
+      "vol20_pct": 11.6,
       "trend_ok": true,
-      "turnover_yi": 1.69,
-      "score": 0.418
+      "turnover_yi": 1.26,
+      "score": 0.4191
     }
   ]
 }
