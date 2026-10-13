@@ -296,7 +296,6 @@ def cmd_ledger():
                            "price": float(kv.get("price", 0) or 0),
                            "amount": float(kv["amount"]),
                            "reason": kv.get("reason", "")}
-", "")}
                     if row["action"] in ("buy", "sell"):
                         rows.append(row)
                 except (KeyError, ValueError):
