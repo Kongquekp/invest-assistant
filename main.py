@@ -377,7 +377,7 @@ $("cash").textContent=fmt(D.report?.cash)+" 元";
 $("budget").textContent=fmt(D.report?.plan?.total_buy_budget)+" 元";
 $("market_comment").textContent=D.report?.market_comment||"暂无";
 if(D.report?.risk_warning){$("risk").style.display="block";$("risk").textContent="⚠️ "+D.report.risk_warning;}
-const sigMap={buy:["🟢 买入","buy"],hold:["🟡 持有","hold"],watch:["⚪ 观察",""]};
+const sigMap={buy:["🟢 买入","buy"],sell:["🔴 卖出","sell"],hold:["🟡 持有","hold"],watch:["⚪ 观察",""]};
 const cand=D.report?.candidates||[];
 $("candidates").innerHTML=cand.length?cand.map(c=>`
 <div class="row" style="display:block"><div><b>${c.name||""}</b> <span class="sub">${c.code||""}</span>
@@ -478,6 +478,19 @@ def cmd_report():
     if ledger is None:
         ledger = {"account": account_state([], {}, settings), "trades": []}
     plan = position_plan(settings, watchlist.get("regime", "neutral"), ledger["account"])
+    sell_signals = []
+    if settings.get("ma_exit", True):
+        for h in ledger["account"].get("holdings", []):
+            try:
+                hh = etf_hist(h["code"], 120)
+                cc = hh["close"]
+                ma20 = float(cc.tail(20).mean())
+                last = float(cc.iloc[-1])
+                if last < ma20:
+                    sell_signals.append({"code": h["code"], "name": h["name"], "signal": "sell",
+                                         "reason": f"持仓跌破MA20({round(ma20, 3)})，趋势破坏，建议离场回收仓位"})
+            except Exception:
+                continue
     api_key = os.environ.get("DEEPSEEK_API_KEY")
     ai = None
     if api_key:
@@ -508,12 +521,14 @@ def cmd_report():
                    "reason": f"20日涨幅{c['ret20_pct']}%，趋势{'向好' if c['trend_ok'] else '一般'}"}
                   for c in watchlist["candidates"][:3]],
               "portfolio_comment": "", "risk_warning": "AI解读不可用，今日仅依据规则执行。"}
+    if sell_signals:
+        ai["candidates"] = sell_signals + ai.get("candidates", [])
     report = enforce_guardrails(ai, plan)
     report.update({"date": watchlist["date"], "plan": plan,
                    "nav": ledger["account"]["nav"], "cash": ledger["account"]["cash"],
                    "pnl_pct": ledger["account"]["pnl_pct"]})
     _write_json(os.path.join(DATA, "report.json"), report)
-    icon = {"buy": "🟢买", "hold": "🟡持", "watch": "⚪看"}
+    icon = {"buy": "🟢买", "sell": "🔴卖", "hold": "🟡持", "watch": "⚪看"}
     lines = [f"📅 {watchlist['date']} ｜ 市场：**{watchlist['regime']}** ｜ 模式：**{plan['sizing_mode']}**",
              f"💰 净值 {report['nav']} 元（{report['pnl_pct']}%）｜ 现金 {report['cash']} 元 ｜ "
              f"本轮预算 **{plan['total_buy_budget']:.0f} 元**", "",
