@@ -1,0 +1,21 @@
+name: Backtest
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install akshare pandas numpy requests
+      - run: python backtest.py
+      - if: always()
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'backtest: 平行世界回测结果'
+          file_pattern: 'docs/backtest.html data/backtest.json'
