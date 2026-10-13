@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f172a"><title>投资助手</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,"PingFang SC",sans-serif;background:#0f172a;color:#e2e8f0;padding:12px 12px 40px}
+.card{background:#1e293b;border-radius:14px;padding:14px;margin-bottom:12px}
+h1{font-size:19px;margin-bottom:2px}h2{font-size:15px;color:#94a3b8;margin-bottom:10px;font-weight:600}
+.sub{color:#64748b;font-size:12px}
+.row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #293548;font-size:14px}
+.row:last-child{border-bottom:none}
+.tag{display:inline-block;padding:2px 8px;border-radius:20px;font-size:12px}
+.risk_on{background:#14532d;color:#86efac}.neutral{background:#713f12;color:#fde68a}.risk_off{background:#7f1d1d;color:#fca5a5}
+.HALT{background:#7f1d1d;color:#fca5a5}.REDUCE{background:#713f12;color:#fde68a}.NORMAL{background:#14532d;color:#86efac}
+.buy{color:#4ade80}.sell{color:#f87171}.hold{color:#facc15}
+.num{font-variant-numeric:tabular-nums}.pos{color:#4ade80}.neg{color:#f87171}
+.reason{color:#94a3b8;font-size:12px;margin-top:3px;line-height:1.5}
+.warn{background:#422006;color:#fdba74;border-radius:10px;padding:10px;font-size:13px;line-height:1.6}
+.empty{color:#475569;text-align:center;padding:16px 0;font-size:13px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.stat{background:#0f172a;border-radius:10px;padding:10px}.stat .v{font-size:17px;font-weight:700;margin-top:2px}.stat .k{font-size:11px;color:#64748b}
+</style></head><body>
+<div class="card"><h1>📈 投资助手 <span class="sub" id="date"></span></h1>
+<div class="sub">市场 <span id="regime" class="tag"></span> ｜ 模式 <span id="mode" class="tag"></span></div>
+<div class="grid">
+<div class="stat"><div class="k">总资产</div><div class="v num" id="nav"></div></div>
+<div class="stat"><div class="k">累计盈亏</div><div class="v num" id="pnl"></div></div>
+<div class="stat"><div class="k">可用现金</div><div class="v num" id="cash"></div></div>
+<div class="stat"><div class="k">本轮买入预算</div><div class="v num" id="budget"></div></div>
+</div></div>
+<div class="card"><h2>🧭 市场解读</h2>
+<div id="market_comment" class="sub" style="color:#cbd5e1;font-size:13px;line-height:1.7"></div>
+<div id="risk" class="warn" style="margin-top:10px;display:none"></div></div>
+<div class="card"><h2>🎯 今日操作单</h2><div id="candidates"></div></div>
+<div class="card"><h2>💼 当前持仓</h2><div id="holdings"></div></div>
+<div class="card"><h2>📒 操作记录（含当时理由）</h2><div id="trades"></div></div>
+<div class="card"><h2>⚙️ 内置规则</h2><div class="sub" id="rules" style="font-size:12px;line-height:1.8"></div></div>
+<script>
+const D={"settings": {"capital": 10000, "max_drawdown_pct": 15, "max_positions": 4, "stop_loss_pct": 7, "take_profit_pct": 12, "min_cash_pct": 20}, "watchlist": {"date": "2026-10-13", "regime": "risk_off", "scanned": 213, "benchmark": {"code": "510300", "name": "沪深300ETF", "price": 4.335}, "candidates": [{"code": "510300", "name": "沪深300ETF华泰柏瑞", "theme": "沪深300", "price": 4.335, "ret20_pct": -6.45, "ma20": 4.513, "ma60": 4.635, "vol20_pct": 12.1, "trend_ok": false, "turnover_yi": 28.8, "score": -0.0387}, {"code": "159509", "name": "纳指科技ETF景顺", "theme": "科技", "price": 3.187, "ret20_pct": 11.98, "ma20": 3.006, "ma60": 2.819, "vol20_pct": 28.5, "trend_ok": true, "turnover_yi": 14.0, "score": 0.4542}, {"code": "513100", "name": "纳指ETF国泰", "theme": "其他", "price": 2.378, "ret20_pct": 6.35, "ma20": 2.288, "ma60": 2.219, "vol20_pct": 13.8, "trend_ok": true, "turnover_yi": 2.72, "score": 0.4381}, {"code": "159660", "name": "纳指ETF汇添富", "theme": "其他", "price": 2.532, "ret20_pct": 6.16, "ma20": 2.42, "ma60": 2.36, "vol20_pct": 16.9, "trend_ok": true, "turnover_yi": 1.39, "score": 0.437}, {"code": "513300", "name": "纳斯达克ETF华夏", "theme": "纳斯达克", "price": 2.864, "ret20_pct": 5.76, "ma20": 2.752, "ma60": 2.688, "vol20_pct": 16.0, "trend_ok": true, "turnover_yi": 2.74, "score": 0.4346}, {"code": "159659", "name": "纳斯达克100ETF招商", "theme": "纳斯达克", "price": 2.5, "ret20_pct": 5.71, "ma20": 2.402, "ma60": 2.34, "vol20_pct": 14.9, "trend_ok": true, "turnover_yi": 1.29, "score": 0.4342}, {"code": "512800", "name": "银行ETF华宝", "theme": "银行", "price": 0.866, "ret20_pct": 3.71, "ma20": 0.846, "ma60": 0.824, "vol20_pct": 14.5, "trend_ok": true, "turnover_yi": 6.04, "score": 0.4223}, {"code": "515020", "name": "银行ETF华夏", "theme": "银行", "price": 1.857, "ret20_pct": 3.51, "ma20": 1.814, "ma60": 1.765, "vol20_pct": 13.5, "trend_ok": true, "turnover_yi": 1.12, "score": 0.4211}, {"code": "515450", "name": "红利低波50ETF南方", "theme": "红利", "price": 1.441, "ret20_pct": 3.0, "ma20": 1.405, "ma60": 1.4, "vol20_pct": 8.2, "trend_ok": true, "turnover_yi": 1.69, "score": 0.418}]}, "ledger": {"updated": "2026-10-13T12:28:24+08:00", "trades": [], "account": {"cash": 10000.0, "market_value": 0, "nav": 10000.0, "pnl_pct": 0.0, "invested_pct": 0.0, "holdings": []}}, "report": {"market_comment": "今日市场状态为risk_off，基准沪深300ETF（510300）价格4.335，位于MA20（4.513）与MA60（4.635）下方，20日收益-6.45%，趋势走弱，A股宽基整体承压。候选池中A股相关标的（沪深300、银行、红利低波）虽部分趋势尚可，但受risk_off环境压制；表现较强的是纳指系列跨境ETF，20日收益普遍为正且站上均线，但需注意跨境品种的溢价与汇率波动风险。整体策略以防御为主，控制单笔仓位，优先选择趋势确认且波动可控的品种。", "candidates": [{"code": "510300", "name": "沪深300ETF华泰柏瑞", "signal": "watch", "suggested_amount": 0, "entry_price": 4.335, "stop_loss": 4.032, "take_profit": 4.855, "reason": "基准指数处于MA20与MA60下方，20日收益-6.45%，趋势未修复，risk_off环境下暂不介入，等待站上MA20企稳信号。"}, {"code": "159509", "name": "纳指科技ETF景顺", "signal": "buy", "suggested_amount": 500.0, "entry_price": 3.187, "stop_loss": 2.964, "take_profit": 3.569, "reason": "20日收益11.98%，价格站上MA20与MA60，趋势确认，评分0.4542为候选池最高，成交额14.0亿流动性较好；但波动率28.5%偏高，故按单只上限500元小仓介入。"}, {"code": "513100", "name": "纳指ETF国泰", "signal": "buy", "suggested_amount": 500.0, "entry_price": 2.378, "stop_loss": 2.212, "take_profit": 2.663, "reason": "20日收益6.35%，价格位于MA20与MA60上方，趋势良好，评分0.4381，波动率13.8%相对可控，作为纳指核心配置小仓买入。"}, {"code": "159660", "name": "纳指ETF汇添富", "signal": "hold", "suggested_amount": 0, "entry_price": 2.532, "stop_loss": 2.355, "take_profit": 2.836, "reason": "趋势与评分与513100接近，但成交额仅1.39亿，流动性偏弱，且与已选纳指品种高度重合，暂不重复买入，列为观察。"}, {"code": "513300", "name": "纳斯达克ETF华夏", "signal": "hold", "suggested_amount": 0, "entry_price": 2.864, "stop_loss": 2.664, "take_profit": 3.208, "reason": "趋势确认但评分略低于已选纳指标的，且与513100、159509主题重叠，为避免集中度过高，暂不买入。"}, {"code": "159659", "name": "纳斯达克100ETF招商", "signal": "hold", "suggested_amount": 0, "entry_price": 2.5, "stop_loss": 2.325, "take_profit": 2.8, "reason": "趋势良好但成交额1.29亿偏低，与已配置纳指品种重复，暂列观察。"}, {"code": "512800", "name": "银行ETF华宝", "signal": "buy", "suggested_amount": 500.0, "entry_price": 0.866, "stop_loss": 0.805, "take_profit": 0.97, "reason": "20日收益3.71%，站上MA20与MA60，波动率14.5%，成交额6.04亿流动性好，防御属性契合risk_off环境，小仓买入作为A股端防御配置。"}, {"code": "515020", "name": "银行ETF华夏", "signal": "hold", "suggested_amount": 0, "entry_price": 1.857, "stop_loss": 1.727, "take_profit": 2.08, "reason": "与512800同属银行主题，评分略低且成交额较小，避免重复配置，暂不买入。"}, {"code": "515450", "name": "红利低波50ETF南方", "signal": "buy", "suggested_amount": 500.0, "entry_price": 1.441, "stop_loss": 1.34, "take_profit": 1.614, "reason": "20日收益3.0%，站上MA20与MA60，波动率仅8.2%为候选池最低，防御性突出，适合risk_off环境，小仓买入。"}], "portfolio_comment": "当前账户现金10000元，无持仓，仓位0%。本轮预算2000元，剩余仓位4个，单只上限500元。计划买入4只：159509、513100、512800、515450，合计2000元，占账户约20%，保持较高现金比例以应对risk_off环境。配置上兼顾纳指趋势品种与A股银行、红利低波防御品种，分散主题风险。", "risk_warning": "市场处于risk_off状态，A股宽基趋势走弱，若风险偏好进一步下降，权益类ETF可能继续回调。纳指系列跨境ETF存在溢价、汇率及海外市场波动风险，且159509波动率高达28.5%，回撤可能较大。所有买入均设-7%止损，触及即离场；止盈+12%后回落5%离场。本报告基于给定数据生成，不构成投资建议，请根据自身风险承受能力谨慎决策。", "date": "2026-10-13", "plan": {"regime": "risk_off", "sizing_mode": "NORMAL", "slots": 4, "max_single_amount": 500.0, "total_buy_budget": 2000.0, "stop_loss_pct": 7, "take_profit_pct": 12, "trailing_drawdown_pct": 5, "min_cash": 2000.0, "rules_text": "市场状态=risk_off，仓位模式=NORMAL；单只上限500元，本轮预算2000元，剩余仓位4个；止损-7%，止盈+12%后回落5%离场。"}, "nav": 10000.0, "cash": 10000.0, "pnl_pct": 0.0}};const $=id=>document.getElementById(id);
+const fmt=(n,d=0)=>n==null?"—":Number(n).toLocaleString("zh-CN",{minimumFractionDigits:d,maximumFractionDigits:d});
+const cls=v=>v>0?"pos":v<0?"neg":"";
+$("date").textContent=D.report?.date||D.watchlist?.date||"";
+const regime=D.watchlist?.regime||"neutral";
+$("regime").textContent={risk_on:"强势",neutral:"震荡",risk_off:"弱势"}[regime];
+$("regime").className="tag "+regime;
+const mode=D.report?.plan?.sizing_mode||"NORMAL";
+$("mode").textContent={NORMAL:"正常",REDUCE:"减仓",HALT:"停止买入"}[mode];
+$("mode").className="tag "+mode;
+$("nav").textContent=fmt(D.report?.nav)+" 元";
+const pnl=D.report?.pnl_pct;
+$("pnl").innerHTML=pnl==null?"—":`<span class="${cls(pnl)}">${pnl>0?"+":""}${fmt(pnl,2)}%</span>`;
+$("cash").textContent=fmt(D.report?.cash)+" 元";
+$("budget").textContent=fmt(D.report?.plan?.total_buy_budget)+" 元";
+$("market_comment").textContent=D.report?.market_comment||"暂无";
+if(D.report?.risk_warning){$("risk").style.display="block";$("risk").textContent="⚠️ "+D.report.risk_warning;}
+const sigMap={buy:["🟢 买入","buy"],hold:["🟡 持有","hold"],watch:["⚪ 观察",""]};
+const cand=D.report?.candidates||[];
+$("candidates").innerHTML=cand.length?cand.map(c=>`
+<div class="row" style="display:block"><div><b>${c.name||""}</b> <span class="sub">${c.code||""}</span>
+<span class="${sigMap[c.signal]?.[1]||""}">${sigMap[c.signal]?.[0]||c.signal}</span>
+${c.signal==="buy"?`<span class="num sub"> ≈${fmt(c.suggested_amount)}元 ｜ 止损 ${c.stop_loss} ｜ 止盈 ${c.take_profit}</span>`:""}</div>
+<div class="reason">${c.reason||""}</div></div>`).join(""):`<div class="empty">今日无候选</div>`;
+const holdings=D.ledger?.account?.holdings||[];
+$("holdings").innerHTML=holdings.length?holdings.map(h=>{
+const pnlH=h.cost&&h.price?(h.price/h.cost-1)*100:null;
+return`<div class="row" style="display:block"><div><b>${h.name}</b> <span class="sub">${h.code}</span>
+<span class="num ${cls(pnlH)}">${pnlH==null?"":(pnlH>0?"+":"")+fmt(pnlH,2)+"%"}</span></div>
+<div class="reason">${fmt(h.shares,2)} 份 ｜ 成本 ${h.cost} ｜ 现价 ${h.price??"—"} ｜ 市值 ${fmt(h.value)} 元</div></div>`;
+}).join(""):`<div class="empty">暂无持仓（交易后在 GitHub Issues 记账即可同步）</div>`;
+const trades=(D.ledger?.trades||[]).slice(0,30);
+$("trades").innerHTML=trades.length?trades.map(t=>`
+<div class="row" style="display:block"><div><span class="${t.action}">${t.action==="buy"?"买入":"卖出"}</span>
+<b>${t.name||t.code}</b> <span class="sub">${t.code} ｜ ${fmt(t.amount)}元</span></div>
+<div class="reason">${t.date} ｜ ${t.reason||"未填写理由"}</div></div>`).join(""):`<div class="empty">暂无记录</div>`;
+const s=D.settings||{};
+$("rules").innerHTML=`本金 ${fmt(s.capital)} 元 ｜ 最大回撤 ${s.max_drawdown_pct}% ｜ 最多 ${s.max_positions} 只<br>
+单笔止损 -${s.stop_loss_pct}% ｜ 止盈 +${s.take_profit_pct}% ｜ 现金 ≥${s.min_cash_pct}%<br>
+账户回撤 -10% 新开仓减半，-15% 停止买入`;
+</script></body></html>
