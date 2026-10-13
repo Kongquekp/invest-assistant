@@ -1,0 +1,129 @@
+{
+  "date": "2026-10-13",
+  "regime": "risk_off",
+  "scanned": 213,
+  "benchmark": {
+    "code": "510300",
+    "name": "沪深300ETF",
+    "price": 4.335
+  },
+  "candidates": [
+    {
+      "code": "510300",
+      "name": "沪深300ETF华泰柏瑞",
+      "theme": "沪深300",
+      "price": 4.335,
+      "ret20_pct": -6.45,
+      "ma20": 4.513,
+      "ma60": 4.635,
+      "vol20_pct": 12.1,
+      "trend_ok": false,
+      "turnover_yi": 28.8,
+      "score": -0.0387
+    },
+    {
+      "code": "159509",
+      "name": "纳指科技ETF景顺",
+      "theme": "科技",
+      "price": 3.187,
+      "ret20_pct": 11.98,
+      "ma20": 3.006,
+      "ma60": 2.819,
+      "vol20_pct": 28.5,
+      "trend_ok": true,
+      "turnover_yi": 14.0,
+      "score": 0.4542
+    },
+    {
+      "code": "513100",
+      "name": "纳指ETF国泰",
+      "theme": "其他",
+      "price": 2.378,
+      "ret20_pct": 6.35,
+      "ma20": 2.288,
+      "ma60": 2.219,
+      "vol20_pct": 13.8,
+      "trend_ok": true,
+      "turnover_yi": 2.72,
+      "score": 0.4381
+    },
+    {
+      "code": "159660",
+      "name": "纳指ETF汇添富",
+      "theme": "其他",
+      "price": 2.532,
+      "ret20_pct": 6.16,
+      "ma20": 2.42,
+      "ma60": 2.36,
+      "vol20_pct": 16.9,
+      "trend_ok": true,
+      "turnover_yi": 1.39,
+      "score": 0.437
+    },
+    {
+      "code": "513300",
+      "name": "纳斯达克ETF华夏",
+      "theme": "纳斯达克",
+      "price": 2.864,
+      "ret20_pct": 5.76,
+      "ma20": 2.752,
+      "ma60": 2.688,
+      "vol20_pct": 16.0,
+      "trend_ok": true,
+      "turnover_yi": 2.74,
+      "score": 0.4346
+    },
+    {
+      "code": "159659",
+      "name": "纳斯达克100ETF招商",
+      "theme": "纳斯达克",
+      "price": 2.5,
+      "ret20_pct": 5.71,
+      "ma20": 2.402,
+      "ma60": 2.34,
+      "vol20_pct": 14.9,
+      "trend_ok": true,
+      "turnover_yi": 1.29,
+      "score": 0.4342
+    },
+    {
+      "code": "512800",
+      "name": "银行ETF华宝",
+      "theme": "银行",
+      "price": 0.866,
+      "ret20_pct": 3.71,
+      "ma20": 0.846,
+      "ma60": 0.824,
+      "vol20_pct": 14.5,
+      "trend_ok": true,
+      "turnover_yi": 6.04,
+      "score": 0.4223
+    },
+    {
+      "code": "515020",
+      "name": "银行ETF华夏",
+      "theme": "银行",
+      "price": 1.857,
+      "ret20_pct": 3.51,
+      "ma20": 1.814,
+      "ma60": 1.765,
+      "vol20_pct": 13.5,
+      "trend_ok": true,
+      "turnover_yi": 1.12,
+      "score": 0.4211
+    },
+    {
+      "code": "515450",
+      "name": "红利低波50ETF南方",
+      "theme": "红利",
+      "price": 1.441,
+      "ret20_pct": 3.0,
+      "ma20": 1.405,
+      "ma60": 1.4,
+      "vol20_pct": 8.2,
+      "trend_ok": true,
+      "turnover_yi": 1.69,
+      "score": 0.418
+    }
+  ]
+}
