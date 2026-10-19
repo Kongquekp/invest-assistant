@@ -1,59 +1,69 @@
 {
-  "market_comment": "今日市场状态为risk_off，沪深300ETF价格4.345低于MA20（4.513）和MA60（4.635），20日收益-6.24%，趋势偏弱。候选池中纳指科技ETF、纳指ETF及银行ETF等品种趋势向上，但需注意risk_off环境下整体风险偏好较低，应控制仓位。",
+  "market_comment": "市场处于risk_off状态，基准沪深300ETF价格4.345，低于MA20（4.513）和MA60（4.635），20日收益-6.24%，趋势不佳，A股宽基承压。候选池中海外纳指类ETF趋势向上但波动偏高，银行、红利类防御品种趋势稳健。整体宜控制仓位、优先防御与低波动品种，单只不超过500元，本轮预算2000元。",
   "candidates": [
     {
-      "code": "159509",
-      "name": "纳指科技ETF景顺",
+      "code": "512700",
+      "name": "银行ETF南方",
       "signal": "buy",
       "suggested_amount": 500.0,
-      "entry_price": 3.178,
-      "stop_loss": 2.956,
-      "take_profit": 3.559,
-      "reason": "20日收益11.67%，趋势向上，成交额30.72亿，流动性好，评分0.4519为候选池最高。"
+      "entry_price": 1.55,
+      "stop_loss": 1.442,
+      "take_profit": 1.736,
+      "reason": "趋势向上（价格高于MA20与MA60），20日收益3.61%，波动率13.1%相对可控，防御属性契合risk_off环境，评分0.4217居前。"
+    },
+    {
+      "code": "561580",
+      "name": "央企红利ETF华泰柏瑞",
+      "signal": "buy",
+      "suggested_amount": 500.0,
+      "entry_price": 1.294,
+      "stop_loss": 1.203,
+      "take_profit": 1.449,
+      "reason": "红利防御主题，趋势向上，20日收益3.19%，波动率11.6%为候选池最低，适合风险偏好收缩时配置。"
+    },
+    {
+      "code": "515020",
+      "name": "银行ETF华夏",
+      "signal": "watch",
+      "suggested_amount": 0,
+      "entry_price": 1.857,
+      "stop_loss": 1.727,
+      "take_profit": 2.08,
+      "reason": "趋势向上但评分略低于南方银行ETF，且与512700主题重复，暂观察不重复建仓。"
     },
     {
       "code": "159696",
       "name": "纳指ETF易方达",
-      "signal": "buy",
-      "suggested_amount": 500.0,
+      "signal": "watch",
+      "suggested_amount": 0,
       "entry_price": 2.19,
       "stop_loss": 2.037,
       "take_profit": 2.453,
-      "reason": "20日收益6.93%，趋势向上，评分0.4416，波动率15.7%相对适中。"
+      "reason": "趋势向上、波动率15.7%适中，但成交额仅1.21亿流动性偏弱，且海外资产在risk_off下不宜追高，暂观察。"
     },
     {
       "code": "513100",
       "name": "纳指ETF国泰",
-      "signal": "buy",
-      "suggested_amount": 500.0,
+      "signal": "watch",
+      "suggested_amount": 0,
       "entry_price": 2.375,
       "stop_loss": 2.209,
       "take_profit": 2.66,
-      "reason": "20日收益6.22%，趋势向上，成交额6.21亿，评分0.4373。"
-    },
-    {
-      "code": "159659",
-      "name": "纳斯达克100ETF招商",
-      "signal": "buy",
-      "suggested_amount": 500.0,
-      "entry_price": 2.506,
-      "stop_loss": 2.331,
-      "take_profit": 2.807,
-      "reason": "20日收益5.96%，趋势向上，评分0.4358，波动率14.6%较低。"
+      "reason": "趋势向上、流动性尚可，但20日已涨6.22%，risk_off环境下海外科技追高风险较大，暂观察。"
     },
     {
       "code": "510300",
       "name": "沪深300ETF华泰柏瑞",
-      "signal": "watch",
+      "signal": "hold",
       "suggested_amount": 0,
       "entry_price": 4.345,
       "stop_loss": 4.041,
       "take_profit": 4.866,
-      "reason": "趋势偏弱，价格低于MA20和MA60，20日收益-6.24%，暂不买入。"
+      "reason": "基准本身趋势不佳，价格低于MA20与MA60，20日收益-6.24%，risk_off下不新增买入，仅作基准参考。"
     }
   ],
-  "portfolio_comment": "当前账户空仓，现金10000元，无持仓。在risk_off环境下，建议谨慎建仓，本轮预算2000元，单只上限500元，共买入4只纳指相关ETF，合计2000元，剩余仓位0个。",
-  "risk_warning": "市场状态为risk_off，整体风险较高，纳指相关ETF波动较大，请严格设置止损止盈，控制仓位，避免过度集中。",
+  "portfolio_comment": "账户当前空仓，现金10000元，无持仓与历史操作。按risk_off下NORMAL仓位模式，本轮预算2000元、单只上限500元、剩余仓位4个，计划先以银行与红利两只防御品种各建仓500元，合计1000元，保留现金应对波动，后续视市场状态再决定是否加仓。",
+  "risk_warning": "市场处于risk_off状态，A股宽基趋势偏弱，若海外市场回调可能拖累纳指类ETF；银行与红利品种虽防御但仍有回撤风险。严格执行单只500元上限与-7%止损、+12%止盈后回落5%离场规则，不追高、不满仓，注意流动性风险。",
   "date": "2026-10-13",
   "plan": {
     "regime": "risk_off",
