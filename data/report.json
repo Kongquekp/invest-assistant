@@ -1,100 +1,70 @@
 {
-  "market_comment": "市场处于risk_off状态，基准沪深300ETF价格4.175，低于MA20（4.208）和MA60（4.492），20日收益-5.8%，趋势不成立，大盘整体偏弱。候选池中消费、红利、食品饮料等防御性板块逆势走强，20日收益为正且站上均线，但成交额普遍偏小，流动性有限，需控制单笔规模。",
+  "market_comment": "市场处于risk_off状态，基准沪深300ETF价格4.124，低于MA20（4.185）和MA60（4.474），20日收益-5.95%，趋势不佳。资金整体偏防御，消费、红利低波、银行等板块逆势走强，趋势完好，可作为防御性配置方向。",
   "candidates": [
     {
       "code": "515650",
       "name": "消费50ETF富国",
       "signal": "buy",
       "suggested_amount": 500.0,
-      "entry_price": 1.122,
-      "stop_loss": 1.043,
-      "take_profit": 1.257,
-      "reason": "20日收益7.27%居首，价格站上MA20与MA60，趋势成立，评分0.4436最高；但成交额仅1.63亿，流动性偏弱，按单只上限500元小仓介入。"
+      "entry_price": 1.142,
+      "stop_loss": 1.062,
+      "take_profit": 1.279,
+      "reason": "20日收益8.45%，站上MA20与MA60，趋势完好，评分0.4507居首；消费防御属性契合risk_off环境。成交额1.12亿偏小，控制单笔仓位。"
     },
     {
       "code": "159928",
       "name": "消费ETF汇添富",
       "signal": "buy",
       "suggested_amount": 500.0,
-      "entry_price": 0.697,
-      "stop_loss": 0.648,
-      "take_profit": 0.781,
-      "reason": "20日收益5.93%，趋势成立，评分0.4356，成交额6.01亿在候选池中相对较好，作为消费板块第二配置。"
+      "entry_price": 0.708,
+      "stop_loss": 0.658,
+      "take_profit": 0.793,
+      "reason": "20日收益7.11%，趋势向上，评分0.4427，成交额5.77亿流动性较好；波动率20%略高，按单只上限配置。"
     },
     {
       "code": "515450",
       "name": "红利低波50ETF南方",
       "signal": "buy",
       "suggested_amount": 500.0,
-      "entry_price": 1.471,
-      "stop_loss": 1.368,
-      "take_profit": 1.648,
-      "reason": "20日收益4.33%，趋势成立，波动率13.6%为候选池最低，防御属性突出，适合risk_off环境。"
-    },
-    {
-      "code": "515100",
-      "name": "红利低波100ETF景顺",
-      "signal": "watch",
-      "suggested_amount": 0,
-      "entry_price": 1.466,
-      "stop_loss": 1.363,
-      "take_profit": 1.642,
-      "reason": "趋势成立、波动率12.6%最低，但本轮预算仅剩500元且与515450主题高度重叠，暂列观察，不重复配置。"
-    },
-    {
-      "code": "515170",
-      "name": "食品饮料ETF华夏",
-      "signal": "watch",
-      "suggested_amount": 0,
-      "entry_price": 0.485,
-      "stop_loss": 0.451,
-      "take_profit": 0.543,
-      "reason": "趋势成立但波动率21.2%偏高，成交额1.59亿偏小，与消费主题重叠，预算受限下暂不买入。"
-    },
-    {
-      "code": "159207",
-      "name": "高股息ETF广发",
-      "signal": "watch",
-      "suggested_amount": 0,
-      "entry_price": 1.2,
-      "stop_loss": 1.116,
-      "take_profit": 1.344,
-      "reason": "趋势成立，评分0.4332，但成交额1.61亿偏小，本轮预算已分配完毕，列为后续观察。"
-    },
-    {
-      "code": "510300",
-      "name": "沪深300ETF华泰柏瑞",
-      "signal": "hold",
-      "suggested_amount": 0,
-      "entry_price": 4.175,
-      "stop_loss": 3.883,
-      "take_profit": 4.676,
-      "reason": "基准指数价格低于MA20与MA60，20日收益-5.8%，趋势不成立，risk_off环境下不介入。"
-    },
-    {
-      "code": "159930",
-      "name": "能源ETF汇添富",
-      "signal": "watch",
-      "suggested_amount": 0,
-      "entry_price": 1.763,
-      "stop_loss": 1.64,
-      "take_profit": 1.975,
-      "reason": "趋势成立但波动率22.7%为候选池最高，价格贴近MA20，成交额1.13亿偏小，风险收益比不佳。"
+      "entry_price": 1.484,
+      "stop_loss": 1.38,
+      "take_profit": 1.662,
+      "reason": "红利低波主题，20日收益4.29%，趋势完好，波动率14.3%为候选池最低，防御性强，评分0.4257。"
     },
     {
       "code": "516310",
       "name": "银行ETF易方达",
+      "signal": "buy",
+      "suggested_amount": 500.0,
+      "entry_price": 1.457,
+      "stop_loss": 1.355,
+      "take_profit": 1.632,
+      "reason": "银行板块20日收益3.33%，站上MA20与MA60，趋势完好，评分0.42；低估值高股息属性适合risk_off环境。"
+    },
+    {
+      "code": "510300",
+      "name": "沪深300ETF华泰柏瑞",
       "signal": "watch",
       "suggested_amount": 0,
-      "entry_price": 1.45,
-      "stop_loss": 1.348,
-      "take_profit": 1.624,
-      "reason": "趋势成立但20日收益2.91%相对落后，波动率19.2%偏高，预算受限下暂不配置。"
+      "entry_price": 4.124,
+      "stop_loss": 3.835,
+      "take_profit": 4.619,
+      "reason": "基准指数价格低于MA20与MA60，20日收益-5.95%，趋势不佳，暂不介入，观察能否企稳。"
+    },
+    {
+      "code": "512010",
+      "name": "医药ETF易方达",
+      "signal": "watch",
+      "suggested_amount": 0,
+      "entry_price": 0.393,
+      "stop_loss": 0.365,
+      "take_profit": 0.44,
+      "reason": "趋势尚可但波动率25.6%为候选池最高，risk_off环境下暂列观察，不占用本轮预算。"
     }
   ],
-  "portfolio_comment": "账户当前空仓，现金10000元，本轮预算2000元、剩余仓位4个。计划买入消费50ETF、消费ETF、红利低波50ETF各500元，合计1500元，占用3个仓位，保留500元预算与1个仓位应对后续波动。所有买入均按单只500元上限执行，止损-7%、止盈+12%后回落5%离场。",
-  "risk_warning": "市场处于risk_off状态，基准指数趋势向下，防御板块逆势上涨存在补跌风险；候选ETF成交额普遍偏小，买卖冲击成本与流动性风险较高；止损止盈为纪律参考，不保证成交价格；本报告不构成投资建议。",
-  "date": "2026-11-04",
+  "portfolio_comment": "账户当前全现金10000元，无持仓，无历史操作。本轮按NORMAL仓位模式配置2000元预算，买入4只防御型ETF各500元，合计2000元，占总资产20%，剩余仓位已用满，保留8000元现金应对波动。",
+  "risk_warning": "市场处于risk_off状态，基准趋势偏弱，若大盘继续下行，防御板块亦可能补跌；单只止损-7%，止盈+12%后回落5%离场，请严格执行。消费类ETF成交额偏小，注意流动性风险；本报告不构成投资建议。",
+  "date": "2026-11-06",
   "plan": {
     "regime": "risk_off",
     "sizing_mode": "NORMAL",
